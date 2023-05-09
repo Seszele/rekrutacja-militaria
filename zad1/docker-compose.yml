@@ -1,0 +1,34 @@
+version: '3.9'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: zad1-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+    networks:
+      - zad1-network
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: zad1-mailhog
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+    networks:
+      - zad1-network
+
+  consoleapp:
+    build: .
+    depends_on:
+      - rabbitmq
+      - mailhog
+    networks:
+      - zad1-network
+
+networks:
+  zad1-network:
+    driver: bridge

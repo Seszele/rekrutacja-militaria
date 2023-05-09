@@ -2,10 +2,10 @@
 
 Console.WriteLine("Hello, World!");
 // Replace these values with your RabbitMQ server and email server credentials
-string rabbitMqHostname = "localhost";
+string rabbitMqHostname = "rabbitmq";
 string rabbitMqUsername = "guest";
 string rabbitMqPassword = "guest";
-string smtpServer = "localhost";
+string smtpServer = "mailhog";
 int smtpPort = 1025;
 string smtpUsername = "your_email@example.com";
 string smtpPassword = "your_password";
@@ -39,8 +39,8 @@ var mailObject = new MailObject
 // Send the test email using the Producer
 producer.Send(mailObject);
 
-Console.WriteLine("Test email sent. Press any key to exit...");
-Console.ReadKey();
+Console.WriteLine("Test email sent. Exiting...");
+// Console.ReadKey();
 
 consumer.Stop();
 
