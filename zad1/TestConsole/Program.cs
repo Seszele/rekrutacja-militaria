@@ -9,7 +9,7 @@ string smtpServer = "localhost";
 int smtpPort = 1025;
 string smtpUsername = "your_email@example.com";
 string smtpPassword = "your_password";
-bool useSsl = true;
+bool useSsl = false;
 
 // Create a Producer instance
 var producer = new Producer(rabbitMqHostname, rabbitMqUsername, rabbitMqPassword);
@@ -17,6 +17,7 @@ var producer = new Producer(rabbitMqHostname, rabbitMqUsername, rabbitMqPassword
 // Create a Consumer instance
 var consumer = new Consumer(rabbitMqHostname, rabbitMqUsername, rabbitMqPassword);
 
+consumer.Start();
 // Prepare a test email
 var mailObject = new MailObject
 {
@@ -40,6 +41,8 @@ producer.Send(mailObject);
 
 Console.WriteLine("Test email sent. Press any key to exit...");
 Console.ReadKey();
+
+consumer.Stop();
 
 // Dispose of the Producer and Consumer instances
 producer.Dispose();
