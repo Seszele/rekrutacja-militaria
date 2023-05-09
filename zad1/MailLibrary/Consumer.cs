@@ -6,6 +6,7 @@ using MimeKit;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using MailLibrary.Utils;
+using MailLibrary.Exceptions;
 
 namespace MailLibrary;
 public class Consumer : IDisposable
@@ -48,13 +49,28 @@ public class Consumer : IDisposable
 
     private void OnReceived(object? sender, BasicDeliverEventArgs e)
     {
-        var body = e.Body.ToArray();
-        var mailObjectJson = Encoding.UTF8.GetString(body);
-        var mailObject = JsonSerializer.Deserialize<MailObject>(mailObjectJson);
-
-        if (mailObject != null && mailObject.SmtpConfiguration != null)
+        try
         {
-            SendEmail(mailObject);
+            var body = e.Body.ToArray();
+            var mailObjectJson = Encoding.UTF8.GetString(body);
+            var mailObject = JsonSerializer.Deserialize<MailObject>(mailObjectJson);
+
+            if (mailObject != null && mailObject.SmtpConfiguration != null)
+            {
+                SendEmail(mailObject);
+            }
+        }
+        catch (MailObjectException moex)
+        {
+            Console.WriteLine($"MailObjectException: {moex.Message}");
+        }
+        catch (SmtpConfigurationException scex)
+        {
+            Console.WriteLine($"SmtpConfigurationException: {scex.Message}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}");
         }
     }
 
@@ -83,8 +99,7 @@ public class Consumer : IDisposable
         {
             if (smtpConfig == null)
             {
-                Console.WriteLine("SMTP configuration is null");
-                return;
+                throw new SmtpConfigurationException("SMTP configuration is null.");
             }
             try
             {

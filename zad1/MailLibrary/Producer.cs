@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using MailLibrary.Exceptions;
 using RabbitMQ.Client;
 
 namespace MailLibrary;
@@ -34,7 +35,11 @@ public class Producer : IDisposable
         }
         if (mailObject.To.Count == 0)
         {
-            throw new System.ComponentModel.WarningException("No recipients specified");
+            throw new MailObjectException("No recipients specified.");
+        }
+        if (string.IsNullOrEmpty(mailObject.From))
+        {
+            throw new MailObjectException("No sender specified.");
         }
         var mailObjectJson = JsonSerializer.Serialize(mailObject);
         var body = Encoding.UTF8.GetBytes(mailObjectJson);

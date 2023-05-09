@@ -1,11 +1,12 @@
 ﻿using MailLibrary;
 
-Console.WriteLine("Hello, World!");
 // Replace these values with your RabbitMQ server and email server credentials
-string rabbitMqHostname = "rabbitmq";
+// string rabbitMqHostname = "rabbitmq";
+string rabbitMqHostname = "localhost";
 string rabbitMqUsername = "guest";
 string rabbitMqPassword = "guest";
-string smtpServer = "mailhog";
+// string smtpServer = "mailhog";
+string smtpServer = "localhost";
 int smtpPort = 1025;
 string smtpUsername = "your_email@example.com";
 string smtpPassword = "your_password";
@@ -37,10 +38,19 @@ var mailObject = new MailObject
 };
 
 // Send the test email using the Producer
-producer.Send(mailObject);
+try
+{
+    producer.Send(mailObject);
+
+}
+catch (System.Exception e)
+{
+    Console.WriteLine($"Error sending test email. Exception: {e.Message}");
+    Console.WriteLine($"Exiting...");
+    return;
+}
 
 Console.WriteLine("Test email sent. Exiting...");
-// Console.ReadKey();
 
 consumer.Stop();
 
