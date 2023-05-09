@@ -1,0 +1,12 @@
+C:\Programming\rekrutacja-militaria\zad1\MailLibrary\bin\Debug\net6.0\MailLibrary.deps.json
+C:\Programming\rekrutacja-militaria\zad1\MailLibrary\bin\Debug\net6.0\MailLibrary.dll
+C:\Programming\rekrutacja-militaria\zad1\MailLibrary\bin\Debug\net6.0\MailLibrary.pdb
+C:\Programming\rekrutacja-militaria\zad1\MailLibrary\obj\Debug\net6.0\MailLibrary.csproj.AssemblyReference.cache
+C:\Programming\rekrutacja-militaria\zad1\MailLibrary\obj\Debug\net6.0\MailLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Programming\rekrutacja-militaria\zad1\MailLibrary\obj\Debug\net6.0\MailLibrary.AssemblyInfoInputs.cache
+C:\Programming\rekrutacja-militaria\zad1\MailLibrary\obj\Debug\net6.0\MailLibrary.AssemblyInfo.cs
+C:\Programming\rekrutacja-militaria\zad1\MailLibrary\obj\Debug\net6.0\MailLibrary.csproj.CoreCompileInputs.cache
+C:\Programming\rekrutacja-militaria\zad1\MailLibrary\obj\Debug\net6.0\MailLibrary.dll
+C:\Programming\rekrutacja-militaria\zad1\MailLibrary\obj\Debug\net6.0\refint\MailLibrary.dll
+C:\Programming\rekrutacja-militaria\zad1\MailLibrary\obj\Debug\net6.0\MailLibrary.pdb
+C:\Programming\rekrutacja-militaria\zad1\MailLibrary\obj\Debug\net6.0\ref\MailLibrary.dll
