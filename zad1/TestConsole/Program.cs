@@ -1,12 +1,10 @@
 ﻿using MailLibrary;
 
 // Replace these values with your RabbitMQ server and email server credentials
-// string rabbitMqHostname = "rabbitmq";
-string rabbitMqHostname = "localhost";
+string rabbitMqHostname = "rabbitmq";
 string rabbitMqUsername = "guest";
 string rabbitMqPassword = "guest";
-// string smtpServer = "mailhog";
-string smtpServer = "localhost";
+string smtpServer = "mailhog";
 int smtpPort = 1025;
 string smtpUsername = "your_email@example.com";
 string smtpPassword = "your_password";
