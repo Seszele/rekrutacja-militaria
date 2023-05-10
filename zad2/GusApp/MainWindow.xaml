@@ -5,7 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GusApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="GUS App" Height="640" Width="800">
     <Grid>
+    <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
+        </StackPanel>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Areas}" AutoGenerateColumns="False">
+        <DataGrid.RowStyle>
+        <Style TargetType="DataGridRow">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding NazwaPoziom}" Value="Temat">
+                    <Setter Property="Background" Value="Green"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding NazwaPoziom}" Value="Zakres informacyjny">
+                    <Setter Property="Background" Value="Red"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding NazwaPoziom}" Value="Dziedzina">
+                    <Setter Property="Background" Value="Yellow"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Nazwa" Binding="{Binding Nazwa}" />
+                <DataGridTextColumn Header="Id-Nadrzedny-Element" Binding="{Binding IdNadrzednyElement}" />
+                <DataGridTextColumn Header="Nazwa-Poziom" Binding="{Binding NazwaPoziom}" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
