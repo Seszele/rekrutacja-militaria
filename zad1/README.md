@@ -11,6 +11,10 @@ This is a simple email system built using RabbitMQ, .NET 6, and Mailhog for test
 
 1. Clone the project and navigate to the project directory.
 
+```bash
+git clone https://github.com/Seszele/rekrutacja-militaria.git
+```
+
 2. Build the Docker images:
 
 ```bash
